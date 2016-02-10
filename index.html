@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<style>
+svg{
+    display: block;
+    margin: auto;
+}
+p {
+    padding-bottom: 3cm;
+}
+body{
+	width:1200px;
+	margin:100px auto;
+}
+svg text{
+	font-size:12px;
+}
+rect{
+	shape-rendering:crispEdges;
+}
+</style>
+<body>
+
+<h1>Love horoscope: let the data speak</h1>
+<p align="left" style="margin-top: 1em"> <font size="4" face="sans-serif">
+  MIT performed a long-term study on the factors influencing happiness.
+  They tracked X people over 70+ years, tracking the many factors of their lives.
+  What they found spoke clear: the very most important predictor of contentment
+  with life and health are RELATIONSHIPS. That includes love relationships
+  Last year we wrote about:...
+  This year's message is more upbeat.
+  The STATSSA data on Civil Marriages registered in 2014 has just been released
+  and with it, the number of marriages and ages of the spouses that decided
+  to take this 'the big step'.
+
+  The data is clear about one thing: love has no age. It is heartwarming
+  to see people born in the first quarter of last centure tyng the knots.
+  If you were wondering
+  what age group people of your own age were marrying with, look no further.
+  <br>
+  By the same token, it gives an estimate of your own chances of marrying a spouse of a certain age.
+  We invite you to discover the data-driven love horoscope: based on number, not stars.
+</p>
+
+
+  <h1 align="left" style="margin-top: 1em"> <font size="3" face="sans-serif">
+  How to play?
+  Choose your gender (WOMEN- left side, MAN- right side) and age range.
+  E.g. if you are a FEMALE of 26 you hover over the (25-30) category in the LEFT column. </h1>
+  <h1 align="left" style="margin-top: 1em"> <font size="2" face="sans-serif">
+
+    Disclaimer: the analysis is data driven. We make no guarantees, encourage nothing
+    and have no liability for ... you staying single.
+  </h1>
+
+<p id="slopeChart"></p>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="slope.js"></script>
+
+<script type="text/javascript">
+var datacount = [ 197, 107 ];<!--total number: women,man-->
+
+var data_ages=[
+  ['20-25','90-100', 5],
+  ['65-70','25-30', 25],
+  ['30-35','55-60',49],
+  ['20-25','20-25', 5],
+  ['35-40','25-30', 25],
+  ['30-35','35-40',49],
+  ['35-40','60-65',16],
+  ['25-30','40-45',35],
+  ['65-70','30-35',29],
+  ['30-35','35-40',19],
+  ['85-90','65-70',15],
+  ['40-45','85-90',35],
+  ['90-100','90-100',9]
+];
+
+var width = 1700, height = 910, margin ={b:0, t:40, l:170, r:50}; //margin ={b:0, t:40, l:170, r:50};
+
+var svg = d3.select("#slopeChart")
+	.append("svg").attr('width',width).attr('height',(height+margin.b+margin.t))
+	.append("g").attr("transform","translate("+ margin.l+","+margin.t+")");
+
+var data = [
+	{data:bP.partData(data_ages, 2, datacount), id:'Region_X', header:["Women", "Man", "Who marries whom"]},
+];
+
+bP.draw(data, svg);
+
+</script>
+</body>
+</html>
